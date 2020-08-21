@@ -1,0 +1,82 @@
+<div class="row">
+    <form class="col" (ngSubmit)="guardar(forma)" #forma="ngForm" autocomplete="off">
+        <input type="hidden" name="id" [ngModel]="cliente.id">
+        <div class="form-group row">
+            <div class="col">
+            <label for="nombre">Nombre</label>
+              <input class="form-control"
+                     type="text"
+                     name="nombre"
+                     placeholder="Nombre"
+                     [class.is-invalid]="nombre.invalid && nombre.touched"
+                     [ngModel]="cliente.nombre"
+                     required
+                     #nombre="ngModel">
+              <small *ngIf="nombre.invalid && nombre.touched"
+                     class="form-text text-danger">El campo es requerido</small>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col">
+            <label for="apellido">Apellido</label>
+              <input class="form-control"
+                     type="text"
+                     name="apellido"
+                     placeholder="Apellido"
+                     [class.is-invalid]="apellido.invalid && apellido.touched"
+                     [ngModel]="cliente.apellido"
+                     required
+                     #apellido="ngModel">
+              <small *ngIf="apellido.invalid && apellido.touched"
+                     class="form-text text-danger">El campo es requerido</small>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col">
+            <label for="cuenta">Cuenta</label>
+              <input class="form-control"
+                     type="text"
+                     name="cuenta"
+                     placeholder="Cuenta"
+                     [class.is-invalid]="cuenta.invalid && cuenta.touched"
+                     [ngModel]="cliente.cuenta"
+                     required
+                     #cuenta="ngModel">
+              <small *ngIf="cuenta.invalid && cuenta.touched"
+                     class="form-text text-danger">El campo es requerido</small>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success mr-2">{{cliente.id ? 'Actualizar' : 'Crear'}}</button>
+          <button type="button" class="btn btn-primary" (click)="forma.reset();limpiar()">Limpiar</button>
+          <div class="row">
+              
+          </div>
+    </form>
+    <div class="col">
+        <h3>Información <button (click)="obtenerClientes()" type="button" class="btn btn-primary">Refrescar</button></h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cuenta</th>
+                <th scope="col">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cliente of clientes">
+                <th scope="row">{{cliente.id}}</th>
+                <td>{{cliente.nombre}} {{cliente.apellido}}</td>
+                <td>{{cliente.cuenta}}</td>
+                <td>
+                    <button (click)="editar(cliente)" type="button" class="btn btn-sm btn-success mr-2">Editar</button>
+                    <button (click)="eliminar(cliente.id)" type="button" class="btn btn-sm btn-danger">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
