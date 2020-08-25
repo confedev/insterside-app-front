@@ -3,7 +3,7 @@
 
 Está es una demo de crud para Interside
 
-## DEMO!
+## DEMO! v2
 =======
 # intersideapp
 Demo app interside
