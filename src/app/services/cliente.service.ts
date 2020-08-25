@@ -18,7 +18,7 @@ export class ClienteService {
     return this.http.get(this.url)
       .pipe(
         map( (resp: any[]) =>
-            resp.map( cliente => ({id: cliente.id, nombre: cliente.nombre, apellido: cliente.apellido, cuenta: cliente.cuenta})
+            resp.map( cliente => ({id: cliente.id, nombre: cliente.nombre, apellido: cliente.apellido, cuenta: cliente.cuentas})
           )
         )
        );

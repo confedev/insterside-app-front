@@ -67,4 +67,8 @@ export class FormularioComponent implements OnInit {
       cuenta: '',
     };
   }
+
+  agregarCuenta(){
+    
+  }
 }

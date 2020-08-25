@@ -34,7 +34,7 @@
           </div>
 
           <div class="form-group row">
-            <div class="col">
+            <div class="col col-6">
             <label for="cuenta">Cuenta</label>
               <input class="form-control"
                      type="text"
@@ -42,10 +42,11 @@
                      placeholder="Cuenta"
                      [class.is-invalid]="cuenta.invalid && cuenta.touched"
                      [ngModel]="cliente.cuenta"
-                     required
                      #cuenta="ngModel">
+                     <button (click)="agregarCuenta()" class="btn btn-secondary mt-4">Agregar Cuenta</button>
               <small *ngIf="cuenta.invalid && cuenta.touched"
                      class="form-text text-danger">El campo es requerido</small>
+                     
             </div>
           </div>
 
@@ -70,7 +71,7 @@
               <tr *ngFor="let cliente of clientes">
                 <th scope="row">{{cliente.id}}</th>
                 <td>{{cliente.nombre}} {{cliente.apellido}}</td>
-                <td>{{cliente.cuenta}}</td>
+                <td><div *ngFor="let c of cliente.cuenta">{{c.numero}}</div></td>
                 <td>
                     <button (click)="editar(cliente)" type="button" class="btn btn-sm btn-success mr-2">Editar</button>
                     <button (click)="eliminar(cliente.id)" type="button" class="btn btn-sm btn-danger">Eliminar</button>
